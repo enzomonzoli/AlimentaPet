@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Controle do CA-1</title>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="ident">
+      <p class="eyebrow">Protótipo · Modelo CA-1</p>
+      <h1>Painel de controle</h1>
+    </div>
+    <nav class="tabs" aria-label="Páginas do site">
+      <a href="index.html">Funcionamento</a>
+      <a href="controle.html" aria-current="page">Controle</a>
+    </nav>
+  </header>
+
+  <div class="linkbar">
+    <span class="pill" id="linkPill"><i></i><span id="linkTxt">Funcionamento fechado</span></span>
+    <span>Abra o <a href="index.html" target="_blank" rel="noopener">Funcionamento em outra aba</a> para ver o aparelho reagir a cada ajuste.</span>
+  </div>
+  <p class="statusrow"><span id="sync">Os ajustes são enviados assim que você muda um campo.</span><span class="evt" id="lastEvt"></span></p>
+
+  <main class="cgrid">
+    <div class="col">
+      <section class="panel" aria-labelledby="h-pet">
+        <h2 id="h-pet"><b class="mk">A</b>Pet e reservatório</h2>
+        <div class="stack">
+          <div class="row">
+            <div class="field">
+              <label class="fl" for="nome">Nome do pet</label>
+              <input type="text" id="nome" maxlength="24" autocomplete="off">
+            </div>
+            <div class="field">
+              <span class="fl" id="lb-pub">Público</span>
+              <div class="seg" role="radiogroup" aria-labelledby="lb-pub">
+                <label><input type="radio" name="publico" id="pub-cao" value="cao"><span>Cão</span></label>
+                <label><input type="radio" name="publico" id="pub-gato" value="gato"><span>Gato</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="fl" for="capL">Capacidade do reservatório</label>
+            <input type="range" id="capL" min="3.5" max="4.5" step="0.1">
+            <span class="val"><span id="capLv">4,0</span> L <span class="fh" id="capG"></span></span>
+          </div>
+          <div class="field">
+            <label class="fl" for="alertaPct">Alerta de ração baixa abaixo de</label>
+            <div class="unit" data-u="%"><input type="number" id="alertaPct" min="1" max="50" step="1" inputmode="numeric"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-sis">
+        <h2 id="h-sis"><b class="mk">G</b><b class="mk">H</b>Sistema</h2>
+        <label class="sw"><input type="checkbox" id="alimentacao"><span class="trk"></span><span class="lb">Fonte elétrica<em>aparelho ligado na tomada</em></span></label>
+        <label class="sw"><input type="checkbox" id="wifi"><span class="trk"></span><span class="lb">Wi-Fi<em>necessário para o aplicativo e a câmera</em></span></label>
+        <label class="sw"><input type="checkbox" id="tampa"><span class="trk"></span><span class="lb">Tampa com trava de segurança<em>desligue para simular tampa solta</em></span></label>
+        <label class="sw"><input type="checkbox" id="pote"><span class="trk"></span><span class="lb">Pote encaixado na balança<em>desligue para simular o pote fora, para lavar</em></span></label>
+        <label class="sw"><input type="checkbox" id="falha"><span class="trk"></span><span class="lb">Falha no dosador<em>trava o motor e gera porção incorreta</em></span></label>
+      </section>
+
+      <section class="panel" aria-labelledby="h-rel">
+        <h2 id="h-rel">Relógio do aparelho</h2>
+        <p class="val" id="vclock" style="margin:0 0 10px">--:--:--</p>
+        <div class="stack">
+          <div class="row">
+            <div class="field">
+              <label class="fl" for="hora">Acertar para</label>
+              <input type="time" id="hora" value="06:55">
+            </div>
+            <div class="field">
+              <span class="fl" aria-hidden="true">&nbsp;</span>
+              <button class="btn ghost" type="button" id="btnHora">Acertar hora</button>
+            </div>
+          </div>
+          <div class="field">
+            <label class="fl" for="vel">Velocidade do tempo</label>
+            <select id="vel">
+              <option value="1">Tempo real</option>
+              <option value="60">60× (1 minuto por segundo)</option>
+              <option value="600">600× (10 horas por minuto)</option>
+              <option value="1440">1.440× (1 dia por minuto)</option>
+            </select>
+            <span class="fh">Acelere o relógio para ver as 4 refeições do dia em poucos minutos.</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="panel" aria-labelledby="h-prog">
+        <h2 id="h-prog"><b class="mk">B</b>Programação</h2>
+        <label class="sw"><input type="checkbox" id="automatico"><span class="trk"></span><span class="lb">Modo automático<em>serve as refeições nos horários abaixo</em></span></label>
+        <div id="mrows">
+          <div class="mrow">
+            <label class="sw"><input type="checkbox" id="m0on"><span class="trk"></span><span class="lb">Refeição 1</span></label>
+            <div class="field"><label class="fl" for="m0h">Horário</label><input type="time" id="m0h"></div>
+            <div class="field"><label class="fl" for="m0g">Porção</label><div class="unit" data-u="g"><input type="number" id="m0g" min="5" max="300" step="5" inputmode="numeric"></div></div>
+          </div>
+          <div class="mrow">
+            <label class="sw"><input type="checkbox" id="m1on"><span class="trk"></span><span class="lb">Refeição 2</span></label>
+            <div class="field"><label class="fl" for="m1h">Horário</label><input type="time" id="m1h"></div>
+            <div class="field"><label class="fl" for="m1g">Porção</label><div class="unit" data-u="g"><input type="number" id="m1g" min="5" max="300" step="5" inputmode="numeric"></div></div>
+          </div>
+          <div class="mrow">
+            <label class="sw"><input type="checkbox" id="m2on"><span class="trk"></span><span class="lb">Refeição 3</span></label>
+            <div class="field"><label class="fl" for="m2h">Horário</label><input type="time" id="m2h"></div>
+            <div class="field"><label class="fl" for="m2g">Porção</label><div class="unit" data-u="g"><input type="number" id="m2g" min="5" max="300" step="5" inputmode="numeric"></div></div>
+          </div>
+          <div class="mrow">
+            <label class="sw"><input type="checkbox" id="m3on"><span class="trk"></span><span class="lb">Refeição 4</span></label>
+            <div class="field"><label class="fl" for="m3h">Horário</label><input type="time" id="m3h"></div>
+            <div class="field"><label class="fl" for="m3g">Porção</label><div class="unit" data-u="g"><input type="number" id="m3g" min="5" max="300" step="5" inputmode="numeric"></div></div>
+          </div>
+        </div>
+        <p class="fh" style="margin:8px 0 0">Total programado por dia: <b class="mono" id="totDia">0 g</b></p>
+      </section>
+
+      <section class="panel" aria-labelledby="h-cmd">
+        <h2 id="h-cmd"><b class="mk">D</b>Comandos</h2>
+        <p class="note" id="offNote" hidden>O aparelho está sem energia. Ligue a fonte elétrica para os comandos de dosagem funcionarem.</p>
+        <p class="note" id="wifiNote" hidden>Sem Wi-Fi o aplicativo não consegue liberar porções.</p>
+
+        <div class="cmdblock">
+          <span class="fl">Liberar porção pelo aplicativo</span>
+          <div class="cmd">
+            <div class="unit" data-u="g"><input type="number" id="cmdLib" min="5" max="300" step="5" value="50" inputmode="numeric" aria-label="Gramas a liberar"></div>
+            <button class="btn" type="button" id="btnLib">Liberar agora</button>
+          </div>
+        </div>
+        <div class="cmdblock">
+          <span class="fl">Ração no reservatório</span>
+          <div class="cmd">
+            <div class="unit" data-u="g"><input type="number" id="cmdAdd" min="10" max="2250" step="50" value="500" inputmode="numeric" aria-label="Gramas a adicionar"></div>
+            <button class="btn" type="button" id="btnAdd">Adicionar</button>
+          </div>
+          <div class="btns">
+            <button class="btn ghost" type="button" id="btnEncher">Encher</button>
+            <button class="btn ghost" type="button" id="btnEsvaziar">Esvaziar</button>
+          </div>
+        </div>
+        <div class="cmdblock">
+          <span class="fl">O pet come do pote</span>
+          <div class="cmd">
+            <div class="unit" data-u="g"><input type="number" id="cmdPet" min="5" max="300" step="5" value="30" inputmode="numeric" aria-label="Gramas que o pet come"></div>
+            <button class="btn" type="button" id="btnPet">Pet come</button>
+          </div>
+          <div class="btns"><button class="btn ghost" type="button" id="btnPote">Esvaziar pote</button></div>
+        </div>
+        <div class="cmdblock">
+          <span class="fl">Manutenção</span>
+          <div class="btns">
+            <button class="btn ghost" type="button" id="btnAlertas">Limpar alertas</button>
+            <button class="btn ghost" type="button" id="btnReset">Reiniciar simulação</button>
+          </div>
+        </div>
+        <p class="toast" id="toast" role="status"></p>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="shared.js"></script>
+<script src="controle.js"></script>
+</body>
+</html>

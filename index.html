@@ -1,0 +1,263 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Comedouro CA-1</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+
+<div class="wrap">
+  <header class="top">
+    <div class="ident">
+      <p class="eyebrow">Protótipo · Modelo CA-1</p>
+      <h1>Comedouro automático inteligente</h1>
+    </div>
+    <nav class="tabs" aria-label="Páginas do site">
+      <a href="index.html" aria-current="page">Funcionamento</a>
+      <a href="controle.html">Controle</a>
+    </nav>
+  </header>
+
+  <div class="linkbar">
+    <span class="pill" id="linkPill"><i></i><span id="linkTxt">Página de controle fechada</span></span>
+    <span>Abra o <a href="controle.html" target="_blank" rel="noopener">Controle em outra aba</a> e deixe as duas visíveis lado a lado.</span>
+  </div>
+
+  <main class="stage">
+    <figure class="panel device" style="margin:0">
+      <svg id="dv" class="dv" viewBox="0 0 360 452" role="img" aria-label="Esquema do comedouro CA-1 que muda conforme os dados do controle">
+        <defs>
+          <clipPath id="hopClip"><rect x="106" y="40" width="148" height="144" rx="4"/></clipPath>
+          <clipPath id="augerClip"><rect x="184" y="276" width="60" height="24" rx="12"/></clipPath>
+          <clipPath id="bowlClip"><path d="M86 386H254C254 386 248 412 226 412H114C92 412 86 386 86 386Z"/></clipPath>
+          <pattern id="kib" width="9" height="9" patternUnits="userSpaceOnUse">
+            <rect width="9" height="9" style="fill:var(--kibble)"/>
+            <circle cx="2.5" cy="2.5" r="1.9" style="fill:var(--kibble-d)"/>
+            <circle cx="7" cy="6.6" r="1.9" style="fill:var(--kibble-d)"/>
+          </pattern>
+          <radialGradient id="lens" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#4D8DBF"/><stop offset="1" stop-color="#0A1824"/></radialGradient>
+        </defs>
+
+        <ellipse cx="180" cy="444" rx="150" ry="5" style="fill:var(--line)"/>
+
+        <!-- reservatório (A) -->
+        <rect x="104" y="38" width="152" height="148" rx="8" class="f-glass ink"/>
+        <g clip-path="url(#hopClip)">
+          <rect id="kFill" x="106" y="112" width="148" height="72" fill="url(#kib)"/>
+          <line id="kTop" x1="106" x2="254" y1="112" y2="112" style="stroke:var(--kibble-d);stroke-width:2"/>
+        </g>
+        <g style="stroke:var(--ink);stroke-width:1.5;opacity:.55">
+          <line x1="106" x2="118" y1="75" y2="75"/><line x1="106" x2="122" y1="111" y2="111"/><line x1="106" x2="118" y1="147" y2="147"/>
+        </g>
+        <line id="lowLine" x1="106" x2="254" y1="164" y2="164" style="stroke:var(--accent);stroke-width:1.6;stroke-dasharray:5 4"/>
+        <g id="lid">
+          <rect x="146" y="8" width="68" height="12" rx="5" class="f-steel ink"/>
+          <rect x="98" y="18" width="164" height="22" rx="7" class="f-steel ink"/>
+          <rect id="latch" x="92" y="26" width="12" height="18" rx="3" class="ink" style="fill:var(--ok)"/>
+        </g>
+
+        <!-- corpo -->
+        <rect x="80" y="186" width="200" height="176" rx="16" class="f-body ink"/>
+        <path d="M80 202a16 16 0 0 1 16-16h168a16 16 0 0 1 16 16v62H80z" class="f-body2 ink"/>
+        <text x="94" y="204" class="mono-t t-ink2" style="font-size:9px;letter-spacing:1.4px;font-weight:500">SMARTFEED</text>
+
+        <!-- display (B) -->
+        <rect x="176" y="196" width="94" height="46" rx="5" class="f-lcd ink"/>
+        <text id="lcd1" x="223" y="215" class="lcd-t"></text>
+        <text id="lcd2" x="223" y="231" class="lcd-t"></text>
+        <g style="fill:var(--steel);stroke:var(--ink);stroke-width:1.2">
+          <circle cx="198" cy="253" r="3.6"/><circle cx="223" cy="253" r="3.6"/><circle cx="248" cy="253" r="3.6"/>
+        </g>
+
+        <!-- câmera (C) -->
+        <circle cx="124" cy="238" r="21" style="fill:#1D2830" class="ink"/>
+        <circle cx="124" cy="238" r="14" style="fill:#0A1116"/>
+        <circle cx="124" cy="238" r="9.5" fill="url(#lens)"/>
+        <circle cx="120.5" cy="234" r="2.6" fill="#fff" opacity=".8"/>
+        <circle id="rec" class="rec" cx="143" cy="219" r="2.6" style="fill:#E5372D"/>
+
+        <!-- Wi-Fi (H) -->
+        <circle id="led" cx="124" cy="272" r="4.6" class="led-on ink" style="stroke-width:1.2"/>
+        <g id="wifi" class="wf on">
+          <path d="M114.1 290.1A14 14 0 0 1 133.9 290.1"/><path d="M117.6 293.6A9 9 0 0 1 130.4 293.6"/><path d="M121.2 297.2A4 4 0 0 1 126.8 297.2"/>
+          <line id="wifiX" x1="112" y1="308" x2="136" y2="284" style="stroke:var(--crit);display:none"/>
+        </g>
+        <circle cx="124" cy="301.5" r="1.7" style="fill:var(--ink-2)"/>
+
+        <!-- dosador (D) -->
+        <rect x="176" y="262" width="94" height="84" rx="8" class="f-cav ink"/>
+        <g clip-path="url(#augerClip)">
+          <rect x="184" y="276" width="60" height="24" class="f-steel"/>
+          <g class="auger-lines" style="stroke:var(--body);stroke-width:3;opacity:.85">
+            <line x1="172" y1="300" x2="182" y2="276"/><line x1="184" y1="300" x2="194" y2="276"/><line x1="196" y1="300" x2="206" y2="276"/>
+            <line x1="208" y1="300" x2="218" y2="276"/><line x1="220" y1="300" x2="230" y2="276"/><line x1="232" y1="300" x2="242" y2="276"/>
+            <line x1="244" y1="300" x2="254" y2="276"/><line x1="256" y1="300" x2="266" y2="276"/>
+          </g>
+        </g>
+        <rect x="184" y="276" width="60" height="24" rx="12" fill="none" class="ink" style="stroke-width:1.6"/>
+        <line x1="244" y1="288" x2="256" y2="288" style="stroke:var(--steel);stroke-width:4"/>
+        <circle class="gear" cx="260" cy="316" r="9" style="fill:var(--steel);stroke:var(--body);stroke-width:4.5;stroke-dasharray:3.1 3.1"/>
+        <circle class="gear2" cx="238" cy="326" r="6" style="fill:var(--steel);stroke:var(--body);stroke-width:3.5;stroke-dasharray:2.6 2.6"/>
+        <rect x="184" y="316" width="36" height="20" rx="4" style="fill:#56636D;stroke:var(--ink);stroke-width:1.4"/>
+        <rect x="216" y="321" width="12" height="10" rx="2" style="fill:var(--steel)"/>
+        <circle id="mled" cx="263" cy="272" r="2.6" style="fill:var(--steel)"/>
+
+        <!-- cabo (G) -->
+        <path id="cord" d="M276 334C306 350 308 392 322 426" fill="none" style="stroke:var(--ink);stroke-width:4;stroke-linecap:round"/>
+        <rect x="338" y="414" width="18" height="30" rx="3" class="f-body2 ink" style="stroke-width:1.6"/>
+        <g style="fill:var(--ink)"><rect x="344" y="421" width="6" height="3" rx="1"/><rect x="344" y="433" width="6" height="3" rx="1"/></g>
+        <g id="plug" transform="translate(322 426)">
+          <rect x="0" y="-8" width="16" height="16" rx="3" style="fill:var(--ink)"/>
+          <rect x="16" y="-5.5" width="7" height="3" style="fill:var(--steel)"/><rect x="16" y="2.5" width="7" height="3" style="fill:var(--steel)"/>
+        </g>
+
+        <!-- balança (F) e pote (E) -->
+        <rect x="60" y="410" width="240" height="28" rx="9" class="f-body2 ink"/>
+        <rect x="204" y="418" width="76" height="14" rx="3" class="f-lcd"/>
+        <text id="balSvg" x="242" y="429" class="lcd-t" style="font-size:10px">000 g</text>
+        <path id="bowlGhost" d="M86 386H254C254 386 248 412 226 412H114C92 412 86 386 86 386Z" fill="none" style="stroke:var(--ink-2);stroke-width:1.6;stroke-dasharray:5 4;display:none"/>
+        <path d="M108 362H156L146 382H118Z" class="f-cav ink" style="stroke-width:1.8"/>
+        <g id="bowlG">
+          <path d="M86 386H254C254 386 248 412 226 412H114C92 412 86 386 86 386Z" class="f-body"/>
+          <g clip-path="url(#bowlClip)"><path id="mound" d="M86 412V404Q170 396 254 404V412Z" fill="url(#kib)"/></g>
+          <path d="M86 386H254C254 386 248 412 226 412H114C92 412 86 386 86 386Z" fill="none" class="ink" style="stroke-width:2.5"/>
+          <path d="M96 391H244" style="stroke:var(--steel);stroke-width:1.4;opacity:.8"/>
+        </g>
+        <g id="parts">
+          <circle class="part" cx="127" cy="384" r="2.6" style="animation-delay:-.05s"/><circle class="part" cx="135" cy="384" r="2.6" style="animation-delay:-.25s"/>
+          <circle class="part" cx="142" cy="384" r="2.6" style="animation-delay:-.4s"/><circle class="part" cx="131" cy="384" r="2.6" style="animation-delay:-.15s"/>
+          <circle class="part" cx="138" cy="384" r="2.6" style="animation-delay:-.5s"/><circle class="part" cx="123" cy="384" r="2.6" style="animation-delay:-.33s"/>
+        </g>
+
+        <!-- marcadores -->
+        <g>
+          <line class="lead" x1="269" y1="64" x2="257" y2="64"/><circle class="mkc" cx="278" cy="64" r="9"/><text class="mkt" x="278" y="68">A</text>
+          <line class="lead" x1="290" y1="216" x2="272" y2="216"/><circle class="mkc" cx="299" cy="216" r="9"/><text class="mkt" x="299" y="220">B</text>
+          <line class="lead" x1="69" y1="238" x2="102" y2="238"/><circle class="mkc" cx="60" cy="238" r="9"/><text class="mkt" x="60" y="242">C</text>
+          <line class="lead" x1="290" y1="318" x2="272" y2="318"/><circle class="mkc" cx="299" cy="318" r="9"/><text class="mkt" x="299" y="322">D</text>
+          <line class="lead" x1="67" y1="392" x2="88" y2="394"/><circle class="mkc" cx="58" cy="392" r="9"/><text class="mkt" x="58" y="396">E</text>
+          <line class="lead" x1="53" y1="426" x2="62" y2="426"/><circle class="mkc" cx="44" cy="426" r="9"/><text class="mkt" x="44" y="430">F</text>
+          <line class="lead" x1="346" y1="401" x2="346" y2="413"/><circle class="mkc" cx="346" cy="392" r="9"/><text class="mkt" x="346" y="396">G</text>
+          <line class="lead" x1="101" y1="298" x2="112" y2="296"/><circle class="mkc" cx="92" cy="298" r="9"/><text class="mkt" x="92" y="302">H</text>
+        </g>
+      </svg>
+      <figcaption>Fig. 1 · Vista frontal esquemática. As letras indicam o painel correspondente.</figcaption>
+    </figure>
+
+    <div class="panels">
+      <section class="panel p-res" aria-labelledby="h-res">
+        <h2 id="h-res"><b class="mk">A</b>Reservatório</h2>
+        <div class="big"><span id="resG">0</span><small>g</small></div>
+        <div class="bar" role="presentation"><b id="resBar"></b><u id="resLow"></u></div>
+        <dl class="kv">
+          <div><dt>Nível</dt><dd id="resPct">0%</dd></div>
+          <div><dt>Volume</dt><dd id="resL">—</dd></div>
+          <div><dt>Alerta de ração baixa</dt><dd id="resAl">—</dd></div>
+          <div><dt>Alimento</dt><dd>ração seca</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel p-bal" aria-labelledby="h-bal">
+        <h2 id="h-bal"><b class="mk">E</b><b class="mk">F</b>Pote e balança</h2>
+        <div class="scale" aria-live="off"><span id="balG">000</span><small>g</small></div>
+        <div class="bar" role="presentation"><b id="balBar" class="mid"></b></div>
+        <dl class="kv">
+          <div><dt>Célula de carga</dt><dd id="balSt">—</dd></div>
+          <div><dt>Pote</dt><dd id="balPote">—</dd></div>
+          <div><dt>Capacidade do pote</dt><dd>450 g</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel p-prog" aria-labelledby="h-prog">
+        <h2 id="h-prog"><b class="mk">B</b>Programação</h2>
+        <p class="sub">4 refeições por dia, no relógio do aparelho</p>
+        <p class="clock"><span class="mono" id="clk">00:00:00</span><span id="clkDia">—</span><span id="clkSp">—</span></p>
+        <ol class="meals" id="meals">
+          <li id="ml0"><span class="t" id="mt0">--:--</span><span class="g" id="mg0">-- g</span><span class="s" id="ms0">—</span></li>
+          <li id="ml1"><span class="t" id="mt1">--:--</span><span class="g" id="mg1">-- g</span><span class="s" id="ms1">—</span></li>
+          <li id="ml2"><span class="t" id="mt2">--:--</span><span class="g" id="mg2">-- g</span><span class="s" id="ms2">—</span></li>
+          <li id="ml3"><span class="t" id="mt3">--:--</span><span class="g" id="mg3">-- g</span><span class="s" id="ms3">—</span></li>
+        </ol>
+        <p class="modo" id="modo">—</p>
+      </section>
+
+      <section class="panel p-dos" aria-labelledby="h-dos">
+        <h2 id="h-dos"><b class="mk">D</b>Motor e dosador</h2>
+        <span class="state" id="dosEst">PARADO</span>
+        <div class="bar" role="presentation"><b id="dosBar" class="mid"></b></div>
+        <dl class="kv">
+          <div><dt>Porção</dt><dd id="dosTxt">—</dd></div>
+          <div><dt>Origem</dt><dd id="dosOri">—</dd></div>
+          <div><dt>Vazão</dt><dd id="dosRate">—</dd></div>
+          <div><dt>Servido hoje</dt><dd id="dosHoje">—</dd></div>
+          <div><dt>Dosador</dt><dd id="dosFalha">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel p-cam" aria-labelledby="h-cam">
+        <h2 id="h-cam"><b class="mk">C</b>Câmera</h2>
+        <svg id="cam" class="cam" viewBox="0 0 320 180" role="img" aria-label="Imagem simulada da câmera Full HD sobre o pote">
+          <defs><clipPath id="camBowlClip"><path d="M105 142H215C215 142 208 166 190 166H130C112 166 105 142 105 142Z"/></clipPath></defs>
+          <rect width="320" height="180" fill="#0B1612"/>
+          <rect y="124" width="320" height="56" fill="#0F211A"/>
+          <g id="camScene">
+            <g id="camPet">
+              <ellipse cx="160" cy="124" rx="56" ry="40" fill="#7FA08E"/>
+              <g id="petCao">
+                <ellipse cx="132" cy="82" rx="9" ry="19" transform="rotate(14 132 82)" fill="#6C8B7A"/><ellipse cx="188" cy="82" rx="9" ry="19" transform="rotate(-14 188 82)" fill="#6C8B7A"/>
+                <circle cx="160" cy="80" r="27" fill="#93B5A2"/><ellipse cx="160" cy="92" rx="13" ry="10" fill="#B2CCBD"/>
+                <circle cx="160" cy="88" r="3.6" fill="#0B1511"/><circle cx="149" cy="73" r="3" fill="#0B1511"/><circle cx="171" cy="73" r="3" fill="#0B1511"/>
+              </g>
+              <g id="petGato" style="display:none">
+                <polygon points="136,64 140,40 158,58" fill="#93B5A2"/><polygon points="184,64 180,40 162,58" fill="#93B5A2"/>
+                <circle cx="160" cy="80" r="25" fill="#93B5A2"/>
+                <polygon points="156,86 164,86 160,91" fill="#0B1511"/><circle cx="150" cy="75" r="3" fill="#0B1511"/><circle cx="170" cy="75" r="3" fill="#0B1511"/>
+                <g stroke="#B2CCBD" stroke-width="1.2"><line x1="132" y1="88" x2="150" y2="90"/><line x1="188" y1="88" x2="170" y2="90"/><line x1="132" y1="95" x2="150" y2="93"/><line x1="188" y1="95" x2="170" y2="93"/></g>
+              </g>
+            </g>
+            <path d="M105 142H215C215 142 208 166 190 166H130C112 166 105 142 105 142Z" fill="#2A4338"/>
+            <g clip-path="url(#camBowlClip)"><path id="camMound" d="M105 166V158Q160 150 215 158V166Z" fill="#B58A4E"/></g>
+            <path d="M105 142H215C215 142 208 166 190 166H130C112 166 105 142 105 142Z" fill="none" stroke="#7DB79B" stroke-width="2"/>
+          </g>
+          <g id="camOff" style="display:none"><rect width="320" height="180" fill="#050807"/><text id="camMsg" x="160" y="94" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#7DB79B">SEM SINAL</text></g>
+          <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#CFE9DC">
+            <circle id="camRec" class="rec" cx="14" cy="15" r="4" fill="#E5372D"/>
+            <text x="24" y="19">REC · 1080p</text>
+            <text id="camT" x="306" y="19" text-anchor="end">00:00:00</text>
+          </g>
+        </svg>
+        <p class="sub" style="margin:8px 0 0">Full HD 1080p · imagem simulada, enviada ao aplicativo por Wi-Fi.</p>
+      </section>
+
+      <section class="panel p-alert" aria-labelledby="h-alert">
+        <h2 id="h-alert"><b class="mk bang">!</b>Alertas</h2>
+        <div class="chips" aria-live="polite">
+          <span class="chip" id="al_baixa">Ração baixa <span class="sr" id="al_baixa_s">inativo</span></span>
+          <span class="chip" id="al_vazia">Reservatório vazio <span class="sr" id="al_vazia_s">inativo</span></span>
+          <span class="chip" id="al_porcao">Porção incorreta <span class="sr" id="al_porcao_s">inativo</span></span>
+          <span class="chip" id="al_pote">Pote removido <span class="sr" id="al_pote_s">inativo</span></span>
+          <span class="chip" id="al_tampa">Tampa destravada <span class="sr" id="al_tampa_s">inativo</span></span>
+          <span class="chip" id="al_wifi">Sem Wi-Fi <span class="sr" id="al_wifi_s">inativo</span></span>
+          <span class="chip" id="al_energia">Sem energia <span class="sr" id="al_energia_s">inativo</span></span>
+        </div>
+      </section>
+
+      <section class="panel p-sis" aria-labelledby="h-sis">
+        <h2 id="h-sis"><b class="mk">G</b><b class="mk">H</b>Sistema</h2>
+        <dl class="kv">
+          <div><dt>Alimentação</dt><dd id="sAli">—</dd></div>
+          <div><dt>Conectividade</dt><dd id="sWifi">—</dd></div>
+          <div><dt>Controle</dt><dd id="sCtrl">—</dd></div>
+          <div><dt>Tampa</dt><dd id="sTampa">—</dd></div>
+          <div><dt>Capacidade</dt><dd id="sCap">—</dd></div>
+          <div><dt>Público</dt><dd id="sPub">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel p-log" aria-labelledby="h-log">
+        <h2 id="h-log">Registro do aparelho</h2>
+        <ul class="log" id="log"><li><span class="empty">Nenhum evento ainda.</span></li></ul>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="shared.js"></script>
+<script src="funcionamento.js"></script>
